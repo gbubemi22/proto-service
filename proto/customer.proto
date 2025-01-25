@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+// import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+
+package customer;
+
+
+service CustomerService {
+  rpc CreateCustomer (CreateCustomerRequest) returns (CreateCustomerResponse) {}
+  rpc Login (LoginRequest) returns (LoginResponse){}   
+}
+
+
+
+message CreateCustomerRequest {
+     string first_name = 1;
+     string last_name = 2;
+     string email = 3;
+     string phone_number = 4;
+     string code = 5;
+     string password = 7;
+     optional string image = 8; 
+     string otp = 9;         
+     google.protobuf.Timestamp expired_at = 10;
+   }
+
+message CreateCustomerResponse {
+  string message  = 1;
+}
+
+message LoginRequest {
+     string email = 1;
+     string password = 2;
+}
+
+
+message LoginResponse {
+     string message = 1;
+     string token = 2;
+}
+
+
